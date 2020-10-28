@@ -1,0 +1,1 @@
+<view><button type="default" open-type="getPhoneNumber" data-event-opts="{{[['getphonenumber',[['decryptPhoneNumber',['$event']]]]]}}" bindgetphonenumber="__e">获取手机号</button></view>

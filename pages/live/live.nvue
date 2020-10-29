@@ -37,7 +37,6 @@
 							></image>
 						</view>
 					</scroll-view>
-					4
 					<view class="p">
 						<view
 							class="rounded-circle flex align-center justify-center bg-danger"
@@ -61,9 +60,7 @@
 			<f-gift ref="gift"></f-gift>
 		</view>
 		<!-- 弹幕 -->
-		<view style="position: fixed; bottom: 120rpx; left: 0;right: 0;width: 750rpx;height: 300rpx;" class="bg-main">
-			<text>弹幕区</text>
-		</view>
+			<f-danmu></f-danmu>
 		<!-- 底部 -->
 		<view class="flex align-center justify-between fixed-bottom" style="height: 120rpx;">
 			<view class="px-2">
@@ -89,9 +86,11 @@
 
 <script>
 import fGift from '@/components/live/f-gift.vue';
+import fDanmu from '@/components/live/f-danmu.vue';
 export default {
 	components: {
-		fGift
+		fGift,
+		fDanmu
 	},
 	mounted() {
 		setInterval(() => {

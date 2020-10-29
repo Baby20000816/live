@@ -23,5 +23,8 @@
 	/* 引入free样式库 */
 	@import url("/common/free.css");
 	/* 引入图标库 */
-	@import url("/common/icon.css");
+	/* #ifndef APP-PLUS-NVUE */
+		@import url("/common/icon.css");
+	/* #endif */
+
 </style>

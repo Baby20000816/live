@@ -18,49 +18,23 @@
 			</swiper-item>
 		</swiper>
 		<view class="flex flex-wrap">
-			<view class="list-item" v-for="i in 10" :key="i" @click="openLive">
-				<image
-					src="../../static/1.jpeg"
-					style="width: 365rpx;height: 365rpx;"
-					class="rounded"
-					mode="aspectFill"
-				></image>
-				<view
-					class="rounded-circle px-2 flex align-center"
-					style="position: absolute;left: 15rpx; top: 15rpx;background-color: rgba(0,0,0,0.4);"
-				>
-					<text class="iconfont iconbizhongguanli text-warning mr-1"></text>
-					<text class="text-white font">0</text>
-				</view>
-				<view
-					class="rounded-circle px-2 flex align-center"
-					style="position: absolute;right: 15rpx; top: 15rpx;background-color: rgba(0,0,0,0.4);"
-				>
-					<text class="font-sm text-white">人气:</text>
-					<text class="text-white font-sm">0</text>
-				</view>
-				<view
-					class="rounded-circle flex align-center"
-					style="position: absolute;left: 15rpx; bottom: 15rpx;"
-				>
-					<text class="text-white font">标题</text>
-				</view>
-				<view
-					class="rounded-circle px-2 flex align-center"
-					style="position: absolute;right: 15rpx; bottom: 15rpx;background-color: rgba(0,0,0,0.4);"
-				>
-					<text style="width: 20rpx; height: 20rpx;" class="rounded-circle bg-danger mr-1"></text>
-					<text class="text-white font-sm">已结束</text>
-				</view>
-			</view>
+			<fList 	v-for="(item, index) in list"
+			:key="index"
+			:item="item"
+			@click="openLive(item)"
+			:index="index"></fList>
 		</view>
+		
 		<!-- <tab></tab> -->
 	</view>
 </template>
 
 <script>
+import fList from '@/components/common/f-list.vue';
 export default {
-	components: {},
+	components: {
+		fList
+	},
 	onLoad() {},
 	methods: {
 		openLive() {
@@ -68,16 +42,55 @@ export default {
 				url: '../live/live'
 			});
 		}
+	},
+	data(){
+		return{
+			list:[
+				{
+					cover:"../../static/1.jpeg",
+					count:1,
+					people:"人气",
+					number:1,
+					title:"一只小团团",
+					finish:"已结束"
+				},
+				{
+					cover:"../../static/2.jpeg",
+					count:2,
+					people:"人气",
+					number:3,
+					title:"斗鱼张大仙",
+					finish:"已结束"
+				},
+				{
+					cover:"../../static/3.jpeg",
+					count:1,
+					people:"人气",
+					number:5,
+					title:"卢本伟",
+					finish:"已结束"
+				},
+				{
+					cover:"../../static/4.jpeg",
+					count:0,
+					people:"人气",
+					number:0,
+					title:"PDD",
+					finish:"已结束"
+				},
+				{
+					cover:"../../static/1.jpeg",
+					count:1000,
+					people:"人气",
+					number:10,
+					title:"大司马",
+					finish:"已结束"
+				},
+			]
+		}
 	}
 };
 </script>
 
 <style>
-.list-item {
-	width: 375rpx;
-	height: 375rpx;
-	padding: 5rpx;
-	box-sizing: border-box;
-	position: relative;
-}
 </style>

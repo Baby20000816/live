@@ -35,8 +35,15 @@
 			</view>
 			
 			<!-- 金币 -->
-			<view class="px-2 my-2 bg-secondary" style="height: 80rpx;">
-				<text>金币区</text>
+			<view class="px-2 my-2" style="height: 80rpx;">
+				<view class="flex rounded-circle align-center" style="width: 325rpx;background-color: rgba(0,0,0,0.4);">
+					<view class="p">
+						<text class="text-warning">金币</text>
+					</view>
+					<view class="flex-1 flex-column justify-center">
+						<text class="text-white font">100</text>
+					</view>
+				</view>
 			</view>
 			
 			<!-- 收到礼物 -->

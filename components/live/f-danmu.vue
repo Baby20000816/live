@@ -12,46 +12,51 @@
 				:id="'danmu' + item.id"
 				class="flex justify-start align-start rounded p-2 mb-2"
 				style="background-color: rgba(255,255,255,0.125);"
-				v-for="(item,index) in list" :key="index"
+				v-for="(item, index) in list"
+				:key="index"
 			>
-			<text class="font-md text-danger">{{item.name}}</text>
-			<text class="font-md text-white">{{item.content}}</text>
+				<text class="font-md text-main">{{ item.name }}:</text>
+				<text class="font-md text-white">{{ item.content }}</text>
 			</view>
 		</scroll-view>
 	</view>
 </template>
 
 <script>
-	export default{
-		data(){
-			return{
-				scrollInToView:'',
-				list:[]
-			}
+export default {
+	data() {
+		return {
+			scrollInToView: '',
+			list: []
+		};
+	},
+	mounted() {
+		// let id = 1
+		// setInterval(()=>{
+		// 	this.list.push({
+		// 		id:id,
+		// 		name:'观众'+id,
+		// 		content:'发言_'+id
+		// 	})
+		// 	this.toBottom()
+		// 	id++
+		// },2000)
+	},
+	methods: {
+		send(data) {
+			this.list.push(data)
+			this.toBottom()
 		},
-		mounted() {
-			let id = 1
-			setInterval(()=>{
-				this.list.push({
-					id:id,
-					name:'观众'+id,
-					content:'发言_'+id
-				})
-				this.toBottom()
-				id++
-			},2000)
-		},
-		methods:{
-			toBottom(){
-				setTimeout(()=>{
-					let len = this.list.length
-					if(len>0&&this.list[len-1]){
-						this.scrollInToView = 'danmu' + this.list[len-1].id
-					}
-				},200)
-			}
+		toBottom() {
+			setTimeout(() => {
+				let len = this.list.length;
+				if (len > 0 && this.list[len - 1]) {
+					this.scrollInToView = 'danmu' + this.list[len - 1].id
+				}
+			}, 200)
 		}
 	}
+};
 </script>
 
 <style></style>

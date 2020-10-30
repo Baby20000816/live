@@ -52,7 +52,8 @@ export default {
 					people:"人气",
 					number:1,
 					title:"一只小团团",
-					finish:"已结束"
+					finish:"finish",
+					status:"已结束"
 				},
 				{
 					cover:"../../static/2.jpeg",
@@ -60,7 +61,8 @@ export default {
 					people:"人气",
 					number:3,
 					title:"斗鱼张大仙",
-					finish:"已结束"
+					finish:"doing",
+					status:"直播中"
 				},
 				{
 					cover:"../../static/3.jpeg",
@@ -68,7 +70,8 @@ export default {
 					people:"人气",
 					number:5,
 					title:"卢本伟",
-					finish:"已结束"
+					finish:"finish",
+					status:"已结束"
 				},
 				{
 					cover:"../../static/4.jpeg",
@@ -76,7 +79,8 @@ export default {
 					people:"人气",
 					number:0,
 					title:"PDD",
-					finish:"已结束"
+					finish:"finish",
+					status:"已结束"
 				},
 				{
 					cover:"../../static/1.jpeg",
@@ -84,7 +88,8 @@ export default {
 					people:"人气",
 					number:10,
 					title:"大司马",
-					finish:"已结束"
+					finish:"doing",
+					status:"直播中"
 				},
 			]
 		}
@@ -92,5 +97,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
 </style>

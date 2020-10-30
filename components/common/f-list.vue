@@ -31,20 +31,32 @@
 				class="rounded-circle px-2 flex align-center"
 				style="position: absolute;right: 15rpx; bottom: 15rpx;background-color: rgba(0,0,0,0.4);"
 			>
-				<text style="width: 20rpx; height: 20rpx;" class="rounded-circle bg-danger mr-1"></text>
-				<text class="text-white font-sm">{{item.finish}}</text>
+				<text style="width: 20rpx; height: 20rpx;" class="rounded-circle mr-1" :class="iconClass"></text>
+				<text class="text-white font-sm">{{item.status}}</text>
 			</view>
 		</view>
 	</view>
 </template>
  
 <script>
+	const icons = {
+		finish: {
+			color: 'bg-danger'
+		},
+		doing: {
+			color: 'bg-success'
+		},
+	};
 export default {
 	props: {
 		item: Object,
 		index: [Number, String],
 	},
 	computed: {
+		iconClass() {
+			let item = icons[this.item.finish];
+			return `${item.color}`;
+		}
 	},
 	methods: {
 	}

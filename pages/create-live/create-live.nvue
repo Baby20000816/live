@@ -1,0 +1,70 @@
+<template>
+	<view>
+		<live-pusher
+		id="livePusher"
+		ref="livePusher"
+		class="livePusher"
+		:url="url"
+		:mode="mode"
+		:enable-camera="enableCamera"
+		:auto-focus="true"
+		:device-position="position"
+		:beauty="beauty"
+		:whiteness="whiteness"
+		aspect="9:16"
+		@statechange="statechange"
+		@netstatus="netstatus"
+		@error="error"
+		:style="'height:'+windowHeight+'px;'"
+		style="width: 750rpx;"
+		>
+		</live-pusher>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				url:'',
+				mode:'SD',
+				enableCamera: true,
+				position:"back",
+				beauty:0,
+				whiteness:0,
+				windowHeight:0,
+				context:null
+			}
+		},
+		onLoad() {
+			let res = uni.getSystemInfoSync()
+			this.windowHeight = res.windowHeight
+		},
+		onReady() {
+			this.context = uni.createLivePusherContext('livePusher',this)
+			this.startPreview()
+		}, 
+		methods: {
+			startPreview(){
+				this.context.startPreview({
+					success:(e)=>{
+						console.log(e);
+					}
+				})
+			},
+			statechange(e){
+				console.log(e);
+			},
+			netstatus(e){
+				console.log(e);
+			},
+			error(e){
+				console.log(e);
+			}
+		},
+	}
+</script>
+
+<style>
+
+</style>

@@ -42,6 +42,14 @@
 				}
 			}
         }
+        ,{
+            "path" : "pages/live-room/live-room",
+            "style" : {
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "white",

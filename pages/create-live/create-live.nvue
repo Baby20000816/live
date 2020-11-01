@@ -52,7 +52,7 @@
 			</view>
 		</view>
 		<view class="position-fixed bg-main flex align-center justify-center rounded-circle" style="left: 100rpx;right: 100rpx;bottom: 100rpx;height: 120rpx;">
-			<text class="text-white font-md">开始视频直播</text>
+			<text class="text-white font-md" @click="openLive()">开始视频直播</text>
 		</view>
 		
 		<uni-popup type="bottom" ref="popup">
@@ -67,10 +67,10 @@
 					</view>
 				</view>
 				<view v-else-if="popupType === 'beauty'">
-					<slider :min="0" :max="9" :step="1" :value="beauty" :block-size="18" show-value @change="handleSliderChange"/>
+					<slider :min="0" :max="10" :step="1" :value="beauty" :block-size="18" show-value @change="handleSliderChange"/>
 				</view>
 				<view v-else>
-					<slider :min="0" :max="9" :step="1" :value="whiteness" :block-size="18" show-value @change="handleSliderChange"/>
+					<slider :min="0" :max="10" :step="1" :value="whiteness" :block-size="18" show-value @change="handleSliderChange"/>
 				</view>
 				<view class="f-divider"></view>
 				<view class="flex align-center justify-center" style="height: 90rpx;" hover-class="bg-light">
@@ -131,6 +131,11 @@ export default {
 		this.startPreview();
 	},
 	methods: {
+		openLive() {
+			uni.navigateTo({
+				url: '../live-room/live-room'
+			});
+		},
 		handleSliderChange(e){
 			this[this.popupType] = e.detail.value
 		},

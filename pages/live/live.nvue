@@ -1,6 +1,6 @@
 <template>
 	<view class="flex-1">
-		<video class="flex-1" src="http://ivi.bupt.edu.cn/hls/btv2hd.m3u8" autoplay :controls="false"></video>
+		<video class="flex-1" src="https://live-stream.utools.club/live/ornZUKOqvjSNthnC2wdW.flv?sign=1604333506-fc4fec380cc42b5927a3fa809ad2ba70" autoplay :controls="false"></video>
 		<!-- 头部 -->
 		<view style="position: fixed;left: 0;right: 0;" :style="'top:' + statusBarHeight + 'px'">
 			<!-- 个人信息|观看详细信息 -->
@@ -8,14 +8,14 @@
 				<view style="width: 325rpx;background-color: rgba(0,0,0,0.4);" class="flex rounded-circle">
 					<view class="p">
 						<image
-							src="../../static/1.jpeg"
+							src="../../static/pic/1.jpeg"
 							style="width: 70rpx;height: 70rpx;"
 							class="rounded-circle"
 						></image>
 					</view>
 					<view class="flex-1 flex flex-column justify-center">
-						<text class="text-white font">陶然然</text>
-						<text class="text-white font-sm">100</text>
+						<text class="text-white font">卑微小吴</text>
+						<text class="text-white font-sm">100w</text>
 					</view>
 					<view class="p">
 						<view
@@ -30,7 +30,7 @@
 					<scroll-view scroll-x="true" class="flex-1 flex">
 						<view class="p" v-for="i in 20" :key="i">
 							<image
-								src="/static/meitu.jpg"
+								src="/static/pic/11.jpeg"
 								style="width: 70rpx;height: 70rpx;"
 								class="rounded-circle"
 							></image>
@@ -41,7 +41,7 @@
 							class="rounded-circle flex align-center justify-center bg-danger"
 							style="width: 70rpx;height: 70rpx;"
 						>
-							<text class="text-white font-sm">1000</text>
+							<text class="text-white font-sm">100w+</text>
 						</view>
 					</view>
 				</view>
@@ -182,7 +182,7 @@ export default {
 			let g = this.gifts[index];
 			this.$refs.gift.send({
 				username: '小吴',
-				avatar: '',
+				avatar: '../../static/pic/15.jpeg',
 				gift_name: g.name,
 				gift_image: g.image,
 				num: 10
@@ -214,7 +214,7 @@ export default {
 		setInterval(() => {
 			this.$refs.gift.send({
 				username: '小吴',
-				avatar: '',
+				avatar: '../../static/pic/15.jpeg',
 				gift_name: '蛋糕',
 				gift_image: '/static/gift/3.png',
 				num: 10

@@ -25,7 +25,9 @@
 		</f-list-item>
 		<f-list-item icon="iconzhengzaizhibo" title="我的直播"><text class="text-muted font">0</text></f-list-item>
 		<f-list-item icon="iconfaxian" title="我的关注"><text class="text-muted font">0</text></f-list-item>
+
 		<f-list-item icon="iconmore" title="历史记录"></f-list-item>
+		<f-list-item icon="icontuichu" title="退出登录" @click="logout"></f-list-item>
 	</view>
 </template>
 <script>
@@ -43,7 +45,13 @@ export default {
 		let res = uni.getSystemInfoSync();
 		this.statusBarHeight = res.statusBarHeight;
 	},
-	methods: {}
+	methods: {
+		logout() {
+			uni.navigateTo({
+				url: '../login/login'
+			});
+		}
+	}
 };
 </script>
 <style scoped>

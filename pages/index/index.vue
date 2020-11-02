@@ -1,9 +1,9 @@
 <template>
 	<view>
 		<view>
-			<image src="../../static/banner/2.jpg" class="img" style="width: 750rpx; height: 300rpx;"></image>
+			<image src="../../static/pic/18.jpeg" class="img" style="width: 750rpx; height: 350rpx;"></image>
 		</view>
-		<swiper
+<!-- 		<swiper
 			:indicator-dots="true"
 			:autoplay="true"
 			:interval="3000"
@@ -16,7 +16,7 @@
 			<swiper-item>
 				<image src="../../static/banner/2.jpg" style="width: 750rpx; height: 250rpx;"></image>
 			</swiper-item>
-		</swiper>
+		</swiper> -->
 		<view class="flex flex-wrap">
 			<fList 	v-for="(item, index) in list"
 			:key="index"
@@ -47,7 +47,8 @@ export default {
 		return{
 			list:[
 				{
-					cover:"../../static/1.jpeg",
+					cover:"../../static/pic/1.jpeg",
+					url:'https://live-stream.utools.club/live/ywGsr3DyvZPJQLoxcpWH.flv?sign=1604329020-cd9285356a4a08c822f8ed9fe12a39db',
 					count:1,
 					people:"人气",
 					number:1,
@@ -56,7 +57,7 @@ export default {
 					status:"已结束"
 				},
 				{
-					cover:"../../static/2.jpeg",
+					cover:"../../static/pic/2.jpeg",
 					count:2,
 					people:"人气",
 					number:3,
@@ -65,7 +66,7 @@ export default {
 					status:"直播中"
 				},
 				{
-					cover:"../../static/3.jpeg",
+					cover:"../../static/pic/3.jpeg",
 					count:1,
 					people:"人气",
 					number:5,
@@ -74,7 +75,7 @@ export default {
 					status:"已结束"
 				},
 				{
-					cover:"../../static/4.jpeg",
+					cover:"../../static/pic/4.jpeg",
 					count:0,
 					people:"人气",
 					number:0,
@@ -83,7 +84,7 @@ export default {
 					status:"已结束"
 				},
 				{
-					cover:"../../static/1.jpeg",
+					cover:"../../static/pic/5.jpeg",
 					count:1000,
 					people:"人气",
 					number:10,

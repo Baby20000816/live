@@ -2,7 +2,7 @@ export default {
 	// 全局配置
 	common: {
 		// #ifndef H5
-		baseUrl: "http://live.utools.club/api",
+		baseUrl: "http://lives.utools.club/api",
 		// #endif
 		// #ifdef H5
 		baseUrl: "/api",

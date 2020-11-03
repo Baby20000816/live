@@ -58,6 +58,14 @@
 				}
 			}
         }
+        ,{
+            "path" : "pages/zhibo/zhibo",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/test/test",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "white",

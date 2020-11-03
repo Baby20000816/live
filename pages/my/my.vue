@@ -2,7 +2,7 @@
   <view>
     <view class="top flex align-center justify-center"></view>
     <view v-if="!user" class="flex align-center">
-      <view class="flex align-center justify-center " style="width: 180rpx;height: 180rpx;">
+      <view class="flex align-center justify-center " style="width: 180rpx;height: 180rpx;"  @click="gototest">
         <image
           src="../../static/pic/4.jpeg"
           class="rounded-circle"
@@ -25,7 +25,7 @@
     <view class="flex align-center">
       <view class="flex align-center justify-center position-relative" 
       style="width: 180rpx;height: 160rpx;">
-        <image :src="user.avatar || '/static/taoranran.jpg'" 
+        <image :src="user.avatar || '/static/pic/20.jpeg'" 
         class="rounded-circle"
         style="width: 130rpx;height: 130rpx;position: absolute;top: -60rpx;">
         </image>
@@ -77,11 +77,17 @@ export default {
     
   },
   methods: {
+	  gototest(){
+		  uni.navigateTo({
+		    url:'../test/test'
+		  });
+	  },
     openLogin(){
     uni.navigateTo({
       url:'../login/login'
     });  
     },
+	
     logout(){
     this.$store.dispatch('logout').then(res => {
       uni.navigateBack({

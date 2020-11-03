@@ -11,6 +11,19 @@ export default new Vuex.Store({
 		token:null
 	},
 	actions: {
+		authMethod({
+			state
+		},callback){
+			if(!state.token){
+				uni.showToast({
+					title:'请先登录',
+					icon:'none'
+				});
+				return uni.navigateTo({
+					url:'/pages/login/login'
+				});
+			}
+		},
 		login({
 			state
 		}, user) {

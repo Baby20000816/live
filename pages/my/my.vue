@@ -1,8 +1,12 @@
 <template>
   <view>
-    <view class="top flex align-center justify-center"></view>
+      <view class="top flex align-center justify-center">
+        <view style="position: absolute;top: 90rpx;right: 20rpx;" @click="settings">
+			<text class="iconfont iconmore"></text>
+        </view>
+      </view>
     <view v-if="!user" class="flex align-center">
-      <view class="flex align-center justify-center " style="width: 180rpx;height: 180rpx;"  @click="gototest">
+      <view class="flex align-center justify-center " style="width: 180rpx;height: 180rpx;">
         <image
           src="../../static/pic/4.jpeg"
           class="rounded-circle"
@@ -62,26 +66,29 @@ export default {
   },
   data() {
     return {
-    
     };
   },
   computed:{
     ...mapState({
-      user:state => state.user
+      user:state => state.user,
     })
   },
   onShow() {
     this.$store.dispatch('getUserInfo');
   },
   onLoad() {
-    
   },
   methods: {
-	  gototest(){
-		  uni.navigateTo({
+	  settings(){
+		  this.authJump({
 		    url:'../test/test'
 		  });
 	  },
+	  // gototest(){
+		 //  uni.navigateTo({
+		 //    url:'../test/test'
+		 //  });
+	  // },
     openLogin(){
     uni.navigateTo({
       url:'../login/login'

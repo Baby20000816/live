@@ -1,6 +1,6 @@
 <template>
 	<view class="flex-1">
-		<video class="flex-1" src="https://live-stream.utools.club/live/ornZUKOqvjSNthnC2wdW.flv?sign=1604333506-fc4fec380cc42b5927a3fa809ad2ba70" autoplay :controls="false"></video>
+		<video class="flex-1" :src="src" autoplay :controls="false"></video>
 		<!-- 头部 -->
 		<view style="position: fixed;left: 0;right: 0;" :style="'top:' + statusBarHeight + 'px'">
 			<!-- 个人信息|观看详细信息 -->
@@ -8,18 +8,18 @@
 				<view style="width: 325rpx;background-color: rgba(0,0,0,0.4);" class="flex rounded-circle">
 					<view class="p">
 						<image
-							src="../../static/pic/1.jpeg"
+							:src="detail.user.avatar||'/static/pic/5.jpeg'"
 							style="width: 70rpx;height: 70rpx;"
 							class="rounded-circle"
 						></image>
 					</view>
-					<view class="flex-1 flex flex-column justify-center">
-						<text class="text-white font">卑微小吴</text>
-						<text class="text-white font-sm">100w</text>
+					<view class="flex-1 flex flex-column justify-center ml-1">
+						<text class="text-white font">{{detail.user.username}}</text>
+						<text class="text-white font-sm">{{detail.user.look_count}}</text>
 					</view>
 					<view class="p">
 						<view
-							class="rounded-circle flex align-center justify-center bg-danger"
+							class="rounded-circle flex align-center justify-center bg-main"
 							style="width: 70rpx;height: 70rpx;"
 						>
 							<text class="text-white">+</text>
@@ -50,7 +50,7 @@
 			<view style="height: 80rpx;" class="px-2 my-2 ">
 				<view style="width: 325rpx;background-color: rgba(0,0,0,0.4);" class="flex rounded-circle align-center">
 					<view class="p"><text class="text-warning">金币</text></view>
-					<view class="flex-1 flex flex-column justify-center"><text class="text-white font">100</text></view>
+					<view class="flex-1 flex flex-column justify-center"><text class="text-white font">{{detail.coin}}</text></view>
 				</view>
 			</view>
 			<!-- 收到礼物 -->
@@ -114,7 +114,7 @@
 								:class="giftActiveId === item.id ? 'border boder-main' : ''"
 								@click="giftActiveId = item.id"
 							>
-								<image :src="item.image" mode="" style="width: 100rpx; height: 100rpx;"></image>
+								<image :src="item.image" mode="" style="width: 100rpx; height: 100rpx;" class="rounded"></image>
 								<view class="flex mt-1">
 									<text class="text-warning font mr-1">{{ item.name }}</text>
 									<text class="text-secondary font">{{ item.icon }}</text>
@@ -141,20 +141,55 @@ import fGift from '../../components/live/f-gift.vue';
 import fDanmu from '../../components/live/f-danmu.vue';
 import uniPopup from '../../components/uni-ui/uni-popup/uni-popup.vue';
 import myGifts from '../../common/gifts.js';
+import $H from '../../common/request.js';
 export default {
 	data() {
 		return {
 			statusBarHeight: 0,
 			content: '',
 			gifts: [],
-			giftActiveId: 0
+			giftActiveId: 0,
+			id:0,
+			detail:{
+				created_time:'',
+				id:1,
+				title:'',
+				cover:'',
+				user_id:0,
+				look_count:0,
+				coin:0,
+				key:'',
+				status:0,
+				userId:0,
+				user:{
+					id:0,
+					username:'',
+					avatar:''
+				}
+			},
+			sign:''
 		};
 	},
 	onLoad(option) {
 		let res = uni.getSystemInfoSync();
 		this.statusBarHeight = res.statusBarHeight;
-		console.log(this.statusBarHeight);
+		// console.log(this.statusBarHeight);
 		this.gifts = myGifts;
+		this.id = option.id;
+		console.log(option.id)
+		$H.get('/live/read/'+this.id).then(res=>{
+			console.log(res);
+			this.detail = res.data;
+			this.sign = res.sign;
+		});
+	},
+	computed:{
+		src(){
+			if(this.detail.key==''||this.sign==''){
+				return '';
+			}
+			return `https://live-stream.utools.club/live/${this.detail.key}.flv?sign=${this.sign}`;
+		}
 	},
 	methods: {
 		openCoin() {
@@ -181,8 +216,8 @@ export default {
 			}
 			let g = this.gifts[index];
 			this.$refs.gift.send({
-				username: '小吴',
-				avatar: '../../static/pic/15.jpeg',
+				username: this.$store.state.user.username,
+				avatar: this.$store.state.user.avatar,
 				gift_name: g.name,
 				gift_image: g.image,
 				num: 10
@@ -200,7 +235,7 @@ export default {
 			}
 			this.$refs.danmu.send({
 				id: Math.random() * 100,
-				name: '小吴',
+				name: this.$store.state.user.username,
 				content: this.content
 			});
 			this.content = '';
@@ -213,15 +248,15 @@ export default {
 		}
 	},
 	mounted() {
-		setInterval(() => {
-			this.$refs.gift.send({
-				username: '小吴',
-				avatar: '../../static/pic/15.jpeg',
-				gift_name: '蛋糕',
-				gift_image: '/static/gift/3.png',
-				num: 10
-			});
-		}, 3000);
+		// setInterval(() => {
+		// 	this.$refs.gift.send({
+		// 		username: '小吴',
+		// 		avatar: '../../static/pic/15.jpeg',
+		// 		gift_name: '蛋糕',
+		// 		gift_image: '/static/gift/3.png',
+		// 		num: 10
+		// 	});
+		// }, 3000);
 	},
 	components: {
 		fGift,

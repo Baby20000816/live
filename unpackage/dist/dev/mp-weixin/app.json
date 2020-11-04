@@ -1,22 +1,39 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/live/live",
+    "pages/coin/coin",
+    "pages/create-live/create-live",
+    "pages/live-room/live-room",
+    "pages/login/login",
+    "pages/zhibo/zhibo",
+    "pages/test/test"
   ],
   "subPackages": [],
-  "window": {
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "直播",
-    "navigationBarBackgroundColor": "#8745FF",
-    "backgroundColor": "#8745FF"
-  },
+  "window": {},
   "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#8745FF",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "midButton": {
+      "iconPath": "static/tabbar/min.png",
+      "iconWidth": "65px",
+      "height": "70px"
+    },
     "list": [
       {
-        "pagePath": "pages/index/index"
+        "iconPath": "./static/tabbar/find.png",
+        "selectedIconPath": "static/tabbar/find-selected.png",
+        "pagePath": "pages/index/index",
+        "text": "发现"
       },
       {
-        "pagePath": "pages/my/my"
+        "iconPath": "static/tabbar/my.png",
+        "selectedIconPath": "static/tabbar/my-selected.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
       }
     ]
   },

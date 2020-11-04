@@ -1,7 +1,17 @@
 
-.content {
-	width: 100%;
-	height: 100%;
-	background-color: #5a5b5a;
+.top {
+	width: 750rpx;
+	height: 260rpx;
+	background-image: url(/static/pic/20.jpeg);
+	background-size: cover;
+	background-image: -webkit-linear-gradient(left, #ba7ace 0%, #8745ff 100%);
+	background-image: linear-gradient(to right, #ba7ace 0%, #8745ff 100%);
+}
+.list-item {
+	width: 375rpx;
+	height: 375rpx;
+	padding: 5rpx;
+	box-sizing: border-box;
+	position: relative;
 }
 

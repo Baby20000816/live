@@ -207,11 +207,15 @@ export default {
 	},
 	methods: {
 		handleLiveEvent(e) {
+			console.log(e);
 			let d = e.data;
 			switch (e.type) {
 				case 'online':
 					if (d.action === 'join') {
 						this.list = d.data;
+					}
+					if(d.action==='leave'){
+						this.list = d.data
 					}
 					break;
 				default:
@@ -219,6 +223,7 @@ export default {
 			}
 		},
 		joinOrLeaveLive(type) {
+			console.log(type);
 			if (this.socket && this.token) {
 				this.socket.emit(type + 'Live', {
 					live_id: this.id,
@@ -283,6 +288,10 @@ export default {
 	},
 	mounted() {
 		this.joinOrLeaveLive('join');
+	},
+	destroyed() {
+		this.joinOrLeaveLive('leave');
+		uni.$off('live',this.handleLiveEvent)
 	},
 	components: {
 		fGift,

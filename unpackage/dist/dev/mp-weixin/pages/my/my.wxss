@@ -1,0 +1,10 @@
+
+.top.data-v-0be17cc6 {
+  width: 750rpx;
+  height: 260rpx;
+  background-image: url(/static/pic/5.jpeg);
+  background-size: cover;
+  background-image: -webkit-linear-gradient(left, #646291 0%, #696691 100%);
+  background-image: linear-gradient(to right, #646291 0%, #696691 100%);
+}
+

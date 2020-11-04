@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "f-gift": "/components/live/f-gift",
+    "f-danmu": "/components/live/f-danmu"
+  }
+}

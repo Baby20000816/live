@@ -1,6 +1,6 @@
 {
-  "navigationBarTitleText": "首页",
+  "enablePullDownRefresh": true,
   "usingComponents": {
-    "tab": "/components/common/tab"
+    "f-card": "/components/live/f-card"
   }
 }

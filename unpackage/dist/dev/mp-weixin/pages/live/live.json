@@ -1,0 +1,9 @@
+{
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#000000",
+  "usingComponents": {
+    "uni-popup": "/components/uni-ui/uni-popup/uni-popup",
+    "f-gift": "/components/live/f-gift",
+    "f-danmu": "/components/live/f-danmu"
+  }
+}

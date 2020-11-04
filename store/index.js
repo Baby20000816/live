@@ -37,12 +37,13 @@ export default new Vuex.Store({
 		const{
 			id
 		} = S
-        //测试一条推送数据
-        // S.emit('test', '测试socket连接')
 		S.on(id,(e)=>{
 			let d = e.data
 			if(d.action === 'error'){
 				let msg = d.payload
+				if(e.meta.notoast){
+					return
+				}
 				return uni.showToast({
 					title:msg,
 					icon:'none'
@@ -51,12 +52,21 @@ export default new Vuex.Store({
 		})
 		S.on('online',onlineEvent)
       })
+	  const removeListner=()=>{
+		  if(S){
+			  S.removeListener('online',onlineEvent)
+		  }
+	  }·
       //监听失败
       S.on('error', () => {
+		  removeListner()
+		  state.socket = null
         console.log('连接失败')
       })
       //监听断开
       S.on('disconnect', () => {
+		  removeListner()
+		  state.socket = null
         console.log('已断开')
       })
     },

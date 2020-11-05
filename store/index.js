@@ -8,78 +8,88 @@ import io from '../common/uni-socket.io.js';
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    user: null,
-    token: null,
-    socket: null
-  },
-  actions: {
-    //连接socket
-    connectSocket({
-      state,
-      dispatch
-    }) {
-      const S = io($C.socketUrl, {
-        query: {},
-        transports: ['websocket'],
-        timeout: 5000
-      })
-		let onlineEvent = (e) =>{
-			uni.$emit('live',{
-				type:"online",
-				data:e
+	state: {
+		user: null,
+		token: null,
+		socket: null
+	},
+	actions: {
+		//连接socket
+		connectSocket({
+			state,
+			dispatch
+		}) {
+			const S = io($C.socketUrl, {
+				query: {},
+				transports: ['websocket'],
+				timeout: 5000
 			})
-		}
-      //监听连接
-      S.on('connect', () => {
-        console.log('socket已连接')
-		state.socket = S
-		const{
-			id
-		} = S
-		S.on(id,(e)=>{
-			let d = e.data
-			if(d.action === 'error'){
-				let msg = d.payload
-				if(e.meta.notoast){
-					return
-				}
-				return uni.showToast({
-					title:msg,
-					icon:'none'
-				});
+			let onlineEvent = (e) => {
+				uni.$emit('live', {
+					type: "online",
+					data: e
+				})
 			}
-		})
-		S.on('online',onlineEvent)
-      })
-	  const removeListner=()=>{
-		  if(S){
-			  S.removeListener('online',onlineEvent)
-		  }
-	  }·
-      //监听失败
-      S.on('error', () => {
-		  removeListner()
-		  state.socket = null
-        console.log('连接失败')
-      })
-      //监听断开
-      S.on('disconnect', () => {
-		  removeListner()
-		  state.socket = null
-        console.log('已断开')
-      })
-    },
+			let commentEvent = (e) => {
+				uni.$emit('live', {
+					type: "comment",
+					data: e
+				})
+			}
+			//监听连接
+			S.on('connect', () => {
+				console.log('socket已连接')
+				state.socket = S
+				const {
+					id
+				} = S
+				S.on(id, (e) => {
+					let d = e.data
+					if (d.action === 'error') {
+						let msg = d.payload
+						if (e.meta.notoast) {
+							return
+						}
+						return uni.showToast({
+							title: msg,
+							icon: 'none'
+						});
+					}
+				})
+				S.on('online', onlineEvent)
+				
+				S.on('comment', commentEvent)
+			})
+			const removeListner = () => {
+				if (S) {
+					S.removeListener('online', onlineEvent)
+					S.removeListener('comment', commentEvent)
+				}
+			}
+			//监听失败
+			S.on('error', () => {
+				removeListner()
+				state.socket = null
+				console.log('连接失败')
+			})
+			//监听断开
+			S.on('disconnect', () => {
+				removeListner()
+				state.socket = null
+				console.log('已断开')
+			})
+		},
 		authMethod({
 			state
-		}, callback){
-			if(!state.token){
+		}, callback) {
+
+			if (!state.token) {
 				uni.showToast({
-					title:'请先登录',
-					icon:'none'
+					title: '请先登录',
+					icon: 'none'
 				});
 				return uni.navigateTo({
-					url:'/pages/login/login'
+					url: '/pages/login/login'
 				});
 			}
 			callback()
@@ -89,7 +99,7 @@ export default new Vuex.Store({
 		}, user) {
 			state.user = user
 			state.token = user.token
-		
+
 			uni.setStorageSync('user', JSON.stringify(user))
 			uni.setStorageSync('token', user.token)
 		},
